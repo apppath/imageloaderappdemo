@@ -4,3 +4,44 @@ Image loader library for Android.
 ## Features
 * Image transformations
 * Automatic memory and storage caching
+* Ability to load images from any custom data type
+* Both synchronous and asynchronous image loading modes
+* Almost unlimited customization
+
+## Add dependency:
+
+```gradle
+
+dependencies {
+    implementation 'com.budiyev.android:image-loader:2.5.5'
+}
+
+```
+
+### Simple Usage
+
+```java
+        
+        ImageView view = findViewById(R.id.image_view);
+        // Simply load image from URL into view
+        ImageLoader.with(this).from("https://some.url/image").load(view);
+
+```
+
+### Advanced Usage
+
+```java 
+
+    ImageView view = findViewById(R.id.image_view);
+    
+    ImageLoader.with(this)
+                .from("https://some.url/image")
+                .size(1000, 1000)
+                .roundCorners()
+                .placeholder(new ColorDrawable(Color.LTGRAY))
+                .errorDrawable(new ColorDrawable(Color.RED))
+                .transform(ImageUtils.cropCenter())
+                .transform(ImageUtils.convertToGrayScale())
+                .load(view);
+```
+# Done Work
